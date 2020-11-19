@@ -1,0 +1,81 @@
+﻿@model SikayetFrm.Models.Kisiler
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Şikayet Formu</h3>
+
+    @using (Html.BeginForm("SikayetEkle", "Home", FormMethod.Post))
+    {
+        @Html.LabelFor(x => x.AdSoyad)
+        @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Tel)
+        @Html.TextBoxFor(x => x.Tel, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Aciklama)
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+        <br />
+        @*<label for="fname">Tür</label>
+            <input type="text" id="fname" name="fulltname" placeholder="Your name..">
+            <div class="col-sm-10">
+                @Html.DropDownList("Tur", ViewData["tur"] as SelectList, new { @class = "form-control" })
+            </div>*@
+        @Html.LabelFor(x => x.Sikayetler.Sikayet)
+        @Html.DropDownList("Sikayetid", (List<SelectListItem>)ViewBag.l, "---Seçiniz---", new { @class = "form-control" })
+
+         <button class="btn btn-primary">Şikayet Ekle</button>
+    }
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+﻿@using SikayetFrm.Models
+@model List<Kisiler>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+// Kişiler Tablosunu ve Şikayetleri Gösterdiğimiz Alan.
+ 
+<table id="tbl1" class="table table-bordered ">
+    <thead>
+        <tr>
+            <th>Kişi Ad Soyad</th>
+            <th>Telefon</th>
+            <th>Açıklama</th>
+            <th>Şikayet</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.AdSoyad</td>
+                <td>@x.Tel</td>
+                <td>@x.Aciklama</td>
+                <td>@x.Sikayetler.Sikayet</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<a href="/Home/SikayetEkle" class="btn btn-success" style="float; left; margin:1px">Ekle</a>
+<a href="/GirisYap/LogOut" class="btn btn-danger">Çıkış Yap</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css
+" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css
+" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js
+ "></script>
+
+
+<script>
+    $('#tbl1').dataTable();
+</script>
